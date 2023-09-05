@@ -18,13 +18,26 @@ function Form() {
 
   const buttonFunc = (event) => {
     event.preventDefault();
+    //validation
+    if (Fstate.Name.length === 0) {
+      alert("Invalid Form, Name can not be empty");
+    } else if (Fstate.Dept.length === 0) {
+      alert("Invalid Form, Department can not be empty");
+    } else if (Fstate.Rat < 0 ||Fstate.Rat > 5 ) {
+      alert("Invalid Form, Rating must be between 1 to 5.");
+    } else {
     const saveData = {
       name: Fstate.Name,
       department: Fstate.Dept,
       rating: Fstate.Rat,
     };
     Fstate.EmpData.push(saveData);
-    setFstate({ EmpData: Fstate.EmpData });
+  }
+    setFstate({ EmpData: Fstate.EmpData,
+      Name: "",
+      Dept: "",
+      Rat: "" 
+    });
   };
 
   return (
